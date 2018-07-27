@@ -4,10 +4,10 @@
  * Module dependencies.
  */
 
-var app = require('../app')
-var debug = require('debug')('boilerplate:server')
-var http = require('http')
+import app from'../app'
+import http from 'http'
 require('dotenv').config()
+var debug = require('debug')('boilerplate:server')
 const cluster = require('cluster')
 const numCPUs = require('os').cpus().length
 

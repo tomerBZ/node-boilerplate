@@ -1,19 +1,20 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import router from './routes/routes'
+import logger from './winston'
 
 let app = express()
 import createError from 'http-errors'
 import path from 'path'
 import cookieParser from 'cookie-parser'
 import lessMiddleware from 'less-middleware'
-import logger from 'morgan'
+import morgan from 'morgan'
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
-app.use(logger('dev'))
+app.use(morgan('combined', { stream: logger.stream }));
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 app.use(cookieParser())
