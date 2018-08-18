@@ -1,7 +1,5 @@
 import mysql from 'mysql'
 import util from 'util'
-import errorHandling from '../dist/database/errors/errorHandling'
-let Errors = new errorHandling();
 
 export default class MySQL {
   constructor () {
@@ -42,7 +40,6 @@ export default class MySQL {
       return await this.dbConnection.query(`INSERT INTO ${to} SET ?`, data)
     } catch (error) {
       console.error(error)
-      throw Error(Errors.setError(error).getErrorObject())
     }
   }
 }
